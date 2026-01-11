@@ -1,0 +1,265 @@
+/* ===================================
+   GLOBAL STYLES & RESET
+   =================================== */
+
+/* Reset all default margins and padding for consistency */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Include padding/border in element width calculation */
+}
+
+/* Set base font size for easier rem calculations (1rem = 10px) */
+html{
+  font-size: 62.5%;
+}
+
+/* Global body styling - dark theme */
+body{
+  background-color: rgb(3,0,31); /* Very dark purple background */
+  color: white; /* White text by default */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* System font stack */
+  font-size: 1.6rem; /* Base text size (16px) */
+}
+
+/* ===================================
+   MAIN APP LAYOUT
+   =================================== */
+
+/* Main app container - uses flexbox for sidebar + main content layout */
+.App{
+  min-height: 100vh; /* Full viewport height */
+  display: flex; /* Side-by-side layout */
+}
+
+/* ===================================
+   SIDEBAR SECTION
+   =================================== */
+
+/* Left sidebar container */
+.sidebar{
+  width: 25rem; /* Fixed 250px width */
+  background-color: rgb(12,12,46); /* Dark blue-purple */
+  padding: 2rem; /* Internal spacing */
+  border-right: 1px solid white; /* Right border separator */
+}
+
+/* Logo styling */
+.logo{
+ margin-right: 1rem; /* Space between logo and text */
+}
+
+/* Brand/title text styling */
+.brand{
+  color: rgb(0, 255, 255); /* Bright cyan color */
+  font-size: 2.4rem; /* Large text */
+}
+
+/* Upper section of sidebar */
+.upperSide{
+  display: flex; /* Stack items vertically */
+  flex-direction: column; /* Vertical stacking */
+  padding: 2.5rem; /* Internal spacing */
+  border-bottom: 1px solid rgb(100, 100, 100); /* Bottom divider */
+  height: 70%; /* Takes up 70% of sidebar */
+}
+
+/* Top part of upper section (logo and new chat button) */
+.upperSideTop{
+  align-items: center; /* Center items horizontally */
+  margin-bottom: 2.5rem; /* Space below */
+}
+
+/* "New Chat" button styling */
+.midBtn{
+  background-color: #5a4bff; /* Purple button */
+  border: none; /* No border */
+  color: white; /* White text */
+  padding: 1rem 2rem; /* Internal padding */
+  font-size: 1.6rem; /* Text size */
+  margin-top: 4rem; /* Top margin */
+  cursor: pointer; /* Clickable cursor */
+  width: 18rem; /* Fixed width */
+  display: flex; /* Flex layout for icon + text */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  margin-bottom: 3rem; /* Bottom margin */
+  border-radius: 0.5rem; /* Slightly rounded corners */
+}
+
+/* Icon in new chat button */
+.addBtn{
+  height: 2rem; /* Icon size */
+  padding-right: 1rem; /* Space between icon and text */
+}
+
+/* Quick query suggestion buttons */
+.query{
+  display: flex; /* Flex layout */
+  align-items: center; /* Center items */
+  justify-content: center; /* Center horizontally */
+  background: transparent; /* No background color */
+  padding: 1.5rem; /* Internal padding */
+  color: white; /* White text */
+  border: 1px solid white; /* White border */
+  border-radius: 0.5rem; /* Rounded corners */
+  width: 18rem; /* Fixed width */
+  cursor: pointer; /* Clickable cursor */
+  margin-bottom: 2rem; /* Space below */
+  gap: 1rem; /* Space between icon and text */
+  font-size: 1.1rem; /* Small text */
+}
+
+/* Image inside query button */
+.query>img{
+  height: 1.2rem; /* Small icon */
+  object-fit: cover; /* Maintain aspect ratio */
+}
+
+/* Lower section of sidebar (navigation links) */
+.lowerSide{
+  display: flex; /* Stack items */
+  flex-direction: column; /* Vertically */
+  gap: 2rem; /* Space between items */
+  margin-top: 4rem; /* Top margin */
+  margin-right: 1.5rem; /* Right margin */
+}
+
+/* Navigation list items (Home, Saved, Upgrade) */
+.listItems{
+  display: flex; /* Flex layout */
+  align-items: center; /* Center items */
+  gap: 1.5rem; /* Space between icon and text */
+  cursor: pointer; /* Clickable cursor */
+}
+
+/* ===================================
+   MAIN CONTENT AREA
+   =================================== */
+
+/* Main content container */
+.main{
+  min-height: calc(100vh - 14rem); /* Full height minus paddings */
+  display: flex; /* Flex layout */
+  flex-direction: column; /* Stack vertically */
+  align-items: center; /* Center content horizontally */
+  margin: 6rem 10rem; /* Margins around content */
+  margin-bottom: 0rem; /* No bottom margin */
+  flex: 1; /* Takes remaining space */
+  padding: 2rem; /* Internal padding */
+}
+
+/* ===================================
+   CHAT DISPLAY SECTION
+   =================================== */
+
+/* Chat messages container - scrollable area with hidden scrollbar */
+.chats{
+  width: 100%; /* Full width */
+  max-width: 70rem; /* Max width for readability */
+  height: calc(100vh - 26rem); /* Height with footer space */
+  overflow-y: scroll; /* Vertical scroll when content overflows */
+  overflow-x: hidden; /* No horizontal scroll */
+  scroll-behavior: smooth; /* Smooth scrolling animation */
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar in Edge */
+}
+
+/* Hide scrollbar in Chrome, Safari and Opera */
+.chats::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual chat message styling */
+.chat{
+  margin: 1rem; /* Space around message */
+  padding: 2rem 3rem; /* Internal padding */
+  font-size: 1.2rem; /* Text size */
+  display: flex; /* Flex layout */
+  align-items: flex-start; /* Align items to top */
+  text-align: justify; /* Justify text alignment */
+}
+
+/* Chat avatar images */
+.chatimg{
+  object-fit: cover; /* Maintain aspect ratio */
+  width: 3rem; /* Avatar size */
+  margin: 2rem; /* Space around avatar */
+  border-radius: 2.5rem; /* Circular avatar */
+}
+
+/* Bot message styling - different from user messages */
+.bot{
+  background-color: rgb(12,12,46); /* Dark background for bot messages */
+  border-radius: 1rem 1rem 1rem 0; /* Rounded corners (not bottom-left) */
+  width: fit-content; /* Only as wide as content */
+}
+
+/* ===================================
+   CHAT INPUT FOOTER SECTION
+   =================================== */
+
+/* Footer container with input field */
+.chatFooter{
+  width: 100%; /* Full width */
+  display: flex; /* Flex layout */
+  flex-direction: column; /* Stack vertically */
+  align-items: center; /* Center content */
+  justify-content: center; /* Center vertically */
+  gap: 1rem; /* Space between elements */
+  margin-top: auto; /* Push to bottom */
+}
+
+/* Input field container */
+.inp{
+  padding: 0.5rem; /* Internal padding */
+  background: rgba(222, 222, 222, 0.1); /* Subtle gray background */
+  display: flex; /* Flex layout */
+  align-items: center; /* Center items vertically */
+  gap: 1rem; /* Space between input and button */
+  border-radius: 0.5rem; /* Rounded corners */
+  width: 100%; /* Full width */
+  max-width: 70rem; /* Max width for readability */
+}
+
+/* Text input field styling */
+.inp>input{
+  width: 100%; /* Take available space */
+  height: 4rem; /* Input height (40px) */
+  padding: 0 1rem; /* Horizontal padding for text */
+  font-size: 1.6rem; /* Text size */
+  color: white; /* White text */
+  outline: none; /* No outline when focused */
+  background: transparent; /* No background */
+  border: none; /* No border */
+}
+
+/* Send button styling */
+.sendBtn{
+  background: transparent; /* Transparent background */
+  border: none; /* No border */
+  cursor: pointer; /* Clickable cursor */
+  display: flex; /* Flex layout */
+  align-items: center; /* Center items */
+  justify-content: center; /* Center horizontally */
+  padding: 0.5rem; /* Internal padding */
+}
+
+/* Disabled state for send button (while loading) */
+.sendBtn:disabled{
+  opacity: 0.5; /* Make semi-transparent */
+  cursor: not-allowed; /* Show not-allowed cursor */
+}
+
+/* Send button icon sizing */
+.sendBtn img{
+  height: 2rem; /* Icon size */
+  width: 2rem; /* Icon size */
+}
+
+/* Disclaimer text at bottom of chat */
+.chatFooter>p{
+  font-size: 1.2rem; /* Small text */
+  color: rgb(180, 180, 180); /* Gray text */
+  margin: 2rem 0; /* Top and bottom margin */
+}
